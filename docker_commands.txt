@@ -1,13 +1,22 @@
-docker run -d --name container_name \
+path = "D:/Data Engineering/ny_taxi_postgres_data"
+
+docker run -d \
     -e POSTGRES_USER="root" \
     -e POSTGRES_PASSWORD="root" \
     -e POSTGRES_DB=datbase_name \
     -p 5432:5432 \
     -v path/in/host:/var/lib/postgresql/data \
+    --network network_name \
+    --name pg-database
     postgres:13
 
-docker run -d --name container_name \
+docker run -d \
     -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
     -e PGADMIN_DEFAULT_PASSWORD="root" \
-    -p 8080:80 \
+    -p 8081:80 \
+    --network pg-network \
+    --name pgadmin \
     dpage/pgadmin4
+
+docker network create network_name
+
