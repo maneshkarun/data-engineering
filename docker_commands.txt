@@ -3,11 +3,11 @@ path = "D:/Data Engineering/ny_taxi_postgres_data"
 docker run -d \
     -e POSTGRES_USER="root" \
     -e POSTGRES_PASSWORD="root" \
-    -e POSTGRES_DB=datbase_name \
-    -p 5432:5432 \
-    -v path/in/host:/var/lib/postgresql/data \
-    --network network_name \
-    --name pg-database
+    -e POSTGRES_DB="ny_taxi" \
+    -p 5431:5432 \
+    -v "D:/Data Engineering/ny_taxi_postgres_data":/var/lib/postgresql/data \
+    --network pg-network \
+    --name pg-database \
     postgres:13
 
 docker run -d \
